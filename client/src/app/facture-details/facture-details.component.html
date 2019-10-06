@@ -1,0 +1,107 @@
+<h4 class="titre"><span class="badge badge-light ">{{fact.idFact}}</span> -> {{fact.dateEd}} {{fact.dateEch}}</h4>
+<div [hidden]="submitted" class="container1">
+    <form  #detailFactForm="ngForm">
+  <div class="form-group">   
+     <mat-form-field>
+        <label for="IdBL">Id bon de livraiosn  </label>
+        <select matNativeControl placeholder="id bl" [(ngModel)]="fact.num_BL"  name="num_BL" #num_BL="ngModel">
+         <option *ngFor="let bl of bls" [value]="bl.IdBL">
+          {{bl.IdBL}}   {{bl.NomPrep}}   {{bl.DateBL}} 
+          </option>
+       </select>
+  </mat-form-field>
+    </div>
+      
+    <div class="form-group">
+            <label for="DateFact">date edition facture</label>
+            <input type="date" class="form-control" id="dateEd" 
+            placeholder="Give  date Edition"
+            required
+            [(ngModel)]="fact.dateEd" name="dateEd" #dateEd="ngModel">
+            <div [hidden]="dateEd.valid ||  dateEd.pristine"
+                 class="alert alert-danger">
+               date is required
+            </div>
+          </div>
+          <div class="form-group">
+                <label for="dateEch">date echéance facture</label>
+                <input type="date" class="form-control" id="dateEch" 
+                placeholder="Give  date Edition"
+                required
+                [(ngModel)]="fact.dateEch" name="dateEch" #dateEch="ngModel">
+                <div [hidden]="dateEch.valid ||  dateEch.pristine"
+                     class="alert alert-danger">
+                     dateEch is required
+                </div>
+              </div>
+         
+          
+          <div class="form-group">
+            <label for="Poids_colis">Montant total  </label>
+            <input type="number" class="form-control" id="prix_tot" placeholder="Give poids colis " 
+            required
+            [(ngModel)]="fact.prix_tot" name="prix_tot" #prix_tot="ngModel">
+            <div [hidden]="prix_tot.valid || prix_tot.pristine"
+                 class="alert alert-danger">
+                 prix_tot is required
+            </div>
+          </div>
+    
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Retour </button>
+        <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!detailFactForm.form.valid">Modifier </button>
+        <button type="button" class="btn btn-dark" (click)="delete()">Supprimer </button>
+	    </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted" class="container1">
+    <p>{{message}}</p>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Retour </button>
+    </div>
+</div>
+
+<!--<span class="container2">
+    <h5>Tous les produit d'une facture   </h5>
+    <div class="Cls"><span class="s1"> Id facture  </span> <span class="s2">numero du bon de livraison  </span> <span class="s2">Date edition facture </span>    <span class="s2">date echance de la facture  </span> <span class="s2">prix totale   </span> <br> <br> </div>
+    <div *ngFor="let fact  of facts" class="container" >
+     
+        <div class="Cls"><span class="badge badge-dark">{{fact.IdPiece}}</span> -> <span class="s1">{{fact.Designation}} </span> <span class="s1">{{ fact.Montant}}</span></div>
+             
+    </div>
+    
+
+  </span>-->
+  <div class="example-container mat-elevation-z8">
+    <table mat-table #table [dataSource]="dataSource">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Title Column -->
+      <ng-container matColumnDef="IdPiece">
+        <th mat-header-cell *matHeaderCellDef> id de la piéce  </th>
+        <td mat-cell *matCellDef="let element" class="IdPiece-col"> {{element.IdPiece}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="Designation">
+        <th mat-header-cell *matHeaderCellDef> Designation de la piéce  </th>
+        <td mat-cell *matCellDef="let element"> {{element.Designation}} </td>
+      </ng-container>
+  
+      <!-- Title Column -->
+      <ng-container matColumnDef="Montant">
+        <th mat-header-cell *matHeaderCellDef> Prix   </th>
+        <td mat-cell *matCellDef="let element"> {{element.Montant}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"  ></tr>
+    </table>
+  </div>
+  <div  class ="dauChart"> 
+      <canvas  id="dauChart">
+     </canvas> <!---->
+
+   </div> 

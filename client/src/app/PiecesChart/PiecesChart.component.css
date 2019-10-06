@@ -1,0 +1,23 @@
+.barChart {
+    position:absolute; 
+    top:60px; 
+    left:200px;
+    width: 800px ; 
+    height: 450px ; 
+    
+}
+.pieChart {
+    position:absolute; 
+    top:500px; 
+    left:200px;
+    width: 800px ; 
+    height: 450px ; 
+    
+}
+
+.ng-hide:not(.ng-hide-animate) {
+    /* These are just alternative ways of hiding an element */
+    display: block!important;
+    position: absolute;
+   
+  }

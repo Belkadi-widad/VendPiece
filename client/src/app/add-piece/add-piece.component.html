@@ -1,0 +1,61 @@
+<h3 class="titre">Ajouter une piéce </h3>
+<div [hidden]="submitted" class="container1">
+    <form #addPieceForm="ngForm">
+ 
+      <div class="form-group">
+        <label for="DesignP">Designiation du produit </label>
+        <input type="text" class="form-control" id="DesignP" placeholder="Give product's Designation" 
+        required
+        [(ngModel)]="piece.DesignP" name="DesignP" #DesignP="ngModel">
+        <div [hidden]="DesignP.valid || DesignP.pristine"
+             class="alert alert-danger">
+            Designation est obligatoire 
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="Poids">Poids</label>
+        <input type="number" class="form-control" id="Poids" placeholder="Give Product's Poids"
+        required
+        [(ngModel)]="piece.Poids" name="Poids" #Poids="ngModel">
+        <div [hidden]="Poids.valid || Poids.pristine"
+             class="alert alert-danger">
+             Poids est obligatoire 
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="Prix_p">Prix produit </label>
+        <input type="number" class="form-control" id="Prix_p" 
+        placeholder="Give Product's Prix_p"
+        required
+        [(ngModel)]="piece.Prix_p" name="Prix_p" #Prix_p="ngModel">
+        <div [hidden]="Prix_p.valid || Prix_p.pristine"
+             class="alert alert-danger">
+ Prix est obligatoire         </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="Qte_p">Quantitée du produit </label>
+        <input type="number" class="form-control" id="Qte_p" 
+        placeholder="Give Product's Qte_p"
+        required
+        [(ngModel)]="piece.Qte_p" name="Qte_p" #Qte_p="ngModel">
+        <div [hidden]="Qte_p.valid || Qte_p.pristine"
+             class="alert alert-danger">
+Quantitée est obligatoire         </div>
+      </div>
+      <div class="btn-group btn-group-sm">
+      	<button type="button" class="btn btn-dark" (click)="goBack()">retour</button>
+      	<button type="button" class="btn btn-dark" (click)="addPiece()" [disabled]="!addPieceForm.form.valid">Ajouter</button>
+      </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted" class="container1">
+  <p>Submitted Successfully! -> <span class="badge badge-light">{{piece.DesignP}}  {{piece.Poids}}</span></p>
+	<div class="btn-group btn-group-sm">
+    	<button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+    	<button type="button" class="btn btn-dark" (click)="newPiece(); addPieceForm.reset()">Continuer</button>
+    </div>
+</div>

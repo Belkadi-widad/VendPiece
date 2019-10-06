@@ -1,0 +1,80 @@
+<h4 class="titre"><span class="badge badge-light ">{{bl.IdBL}}</span> -> {{bl.DateBL}}</h4>
+<div [hidden]="submitted" class="container1">
+    <form  #detailBonLivForm="ngForm">
+  <div class="form-group">   
+     <mat-form-field>
+        <label for="IdComd">Id  de la commande </label>
+        <select matNativeControl placeholder="id commande" [(ngModel)]="bl.NumArCom"  name="NumArCom" #NumArCom="ngModel">
+         <option *ngFor="let commande of commandes" [value]="commande.IdComd">
+          {{commande.IdComd}}   {{commande.Etat_cmd}}   {{commande.date_ar_cmd}} 
+          </option>
+       </select>
+  </mat-form-field>
+    </div>
+      <div class="form-group">
+        <label for="NomPrep">Nom Preparateur </label>
+        <input type="text" class="form-control" id="NomPrep" placeholder="Give NomPrep" 
+        required
+        [(ngModel)]="bl.NomPrep" name="NomPrep" #NomPrep="ngModel">
+        <div [hidden]="NomPrep.valid || NomPrep.pristine"
+             class="alert alert-danger">
+             Nom Preparateur est obligatoire 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="DateBL">date bon de livraison</label>
+        <input type="date" class="form-control" id="DateBL" 
+        placeholder="Give DateBL"
+        required
+        [(ngModel)]="bl.DateBL" name="DateBL" #DateBL="ngModel">
+        <div [hidden]="DateBL.valid || DateBL.pristine"
+             class="alert alert-danger">
+           date est obligatoire 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Nbr_colis">Nombre de colis </label>
+        <input type="number" class="form-control" id="Nbr_colis" placeholder="Give Nbr_colis" 
+        required
+        [(ngModel)]="bl.Nbr_colis" name="Nbr_colis" #Nbr_colis="ngModel">
+        <div [hidden]="Nbr_colis.valid || Nbr_colis.pristine"
+             class="alert alert-danger">
+             Nombre de colis est obligatoire
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="Poids_colis">Poids du colis </label>
+        <input type="number" class="form-control" id="Nbr_colis" placeholder="Give poids colis " 
+        required
+        [(ngModel)]="bl.Poids_Col" name="Poids_Cols" #Poids_Col="ngModel">
+        <div [hidden]="Poids_Col.valid || Poids_Col.pristine"
+             class="alert alert-danger">
+             Poids Colis  est obligatoire 
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="NomPrep">Nom Preparateur </label>
+        <input type="text" class="form-control" id="NomPrep" placeholder="Give NomPrep" 
+        required
+        [(ngModel)]="bl.NomPrep" name="NomPrep" #NomPrep="ngModel">
+        <div [hidden]="NomPrep.valid || NomPrep.pristine"
+             class="alert alert-danger">
+             Nom Preparation  est obligatoire 
+        </div>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+        <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!detailBonLivForm.form.valid">Modifier</button>
+        <button type="button" class="btn btn-dark" (click)="delete()">Supprimer </button>
+	    </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted" class="container1">
+    <p >{{message}}</p>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+    </div>
+</div>

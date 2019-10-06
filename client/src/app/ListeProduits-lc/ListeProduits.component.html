@@ -1,0 +1,7 @@
+<h5>All Products</h5>
+<div class="Cls"><span class="s1"> Id piéce</span> <span class="s2">Designiation</span> <span class="s2">poids</span>  <span class="s2">prix</span><br> <br> </div>
+<div *ngFor="let pieces of pieces" class="container" >
+  <a [routerLink]="['/lc/afficher', pieces.IdPiece]" style="color:black">
+    <div class="Cls"><span class="badge badge-dark">{{pieces.IdPiece}}</span> -> <span class="s1">{{ pieces.DesignP }} </span><span class="s1">{{ pieces.Poids }}</span> <span class="s1"> {{ pieces.Prix_p }}</span></div>
+          </a>
+</div>

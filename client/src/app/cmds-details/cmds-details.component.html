@@ -1,0 +1,53 @@
+<h4 class="titre"><span class="badge badge-light ">{{commande.IdComd}}</span> -> {{commande.date_ar_cmd}}</h4>
+<div [hidden]="submitted" class="container1">
+    <form  #detailCommandeForm="ngForm">
+        <div class="form-group">
+            <label for="clientIdClient">Id client </label>
+            <input type="number" class="form-control" id="clientIdClient" placeholder="Give Product's IdClient"
+            required
+            [(ngModel)]="commande.clientIdClient" name="clientIdClient" #clientIdClient="ngModel">
+            <div [hidden]="clientIdClient.valid || clientIdClient.pristine"
+                 class="alert alert-danger">
+                 IdClient is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="EtatP">Etat commande</label>
+            <input type="text" class="form-control" id="Etat_cmd" placeholder="Give product's Etat_cmd" 
+            required
+            [(ngModel)]="commande.Etat_cmd" name="Etat_cmd" #Etat_cmd="ngModel">
+            <div [hidden]="Etat_cmd.valid || Etat_cmd.pristine"
+                 class="alert alert-danger">
+                 Etat_cmd is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Prix_p">date arrivé commande</label>
+            <input type="date" class="form-control" id="date_ar_cmd" 
+            placeholder="Give Product's date_ar_cmd"
+            required
+            [(ngModel)]="commande.date_ar_cmd" name="date_ar_cmd" #date_ar_cmd="ngModel">
+            <div [hidden]="date_ar_cmd.valid || date_ar_cmd.pristine"
+                 class="alert alert-danger">
+               date arrivée commande est obligatoire 
+            </div>
+          </div>
+          
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+        <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!detailCommandeForm.form.valid">Modifier</button>
+        <button type="button" class="btn btn-dark" (click)="delete()">Supprimer </button>
+        <button type="button" class="btn btn-dark"  routerLink="lc/add" >Ajouter produits à la commande </button>
+        <button type="button" class="btn btn-dark" routerLink="lc" >Afficher produits de  la commande  </button>
+
+
+	    </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted" class="container1">
+    <p>{{message}}</p>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+    </div>
+</div>

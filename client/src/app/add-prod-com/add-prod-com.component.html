@@ -1,0 +1,43 @@
+<h3 class="titre">Add a Product to a command</h3>
+<div [hidden]="submitted" class="container" >
+    <form #addPieceComForm="ngForm">
+      
+        <div class="form-group">
+
+            <mat-form-field>
+               <label for="num_p">Id Piece </label>
+               <select   matNativeControl placeholder="id piece "  [(ngModel)]="lc.num_p"  name="num_p" #num_p="ngModel">
+                <option *ngFor="let piece of pieces" [value]="piece.IdPiece">
+                 {{piece.IdPiece}}   {{piece.DesignP}}   {{piece.Prix_p}} 
+                 </option>
+               </select>
+
+         </mat-form-field>
+
+        </div>
+      <div class="form-group">
+        <label for="qte_com">Quantité commandée </label>
+        <input type="number" class="form-control" id="qte_com" placeholder="Give product's Designation" 
+        required
+        [(ngModel)]="lc.qte_com" name="qte_com" #qte_com="ngModel">
+        <div [hidden]="qte_com.valid || qte_com.pristine"
+             class="alert alert-danger">
+            qte_com is required
+        </div>
+      </div>
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+            <button type="button" class="btn btn-dark" (click)="addLCommande()" [disabled]="!addPieceComForm.form.valid">Add</button>
+        </div>
+  </form>
+
+</div>
+      
+ 
+<div class="PageSuc" [hidden]="!submitted">
+  <p>Submitted Successfully! -> <span class="badge badge-light">{{lc.num_ar_com}}  {{lc.num_p}}</span></p>
+	<div class="btn-group btn-group-sm">
+    	<button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+    	<button type="button" class="btn btn-dark" (click)="newLC(); addPieceComForm.reset()">Continue </button>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<h3 class="titre">Ajouter un client  </h3>
+<div [hidden]="submitted" class="container1">
+    <form #addClientForm="ngForm">
+   <div class="form-group">
+        <label>Prénom  </label>
+        <input type="text" class="form-control" id="fisrt_name" placeholder="Enter Fisrt name " 
+        required
+        [(ngModel)]="client.PrenomCl" name="PrenomCl" #PrenomCl="ngModel"> 
+        
+      </div>
+      <div [hidden]="PrenomCl.valid || PrenomCl.pristine"
+             class="alert alert-danger">
+           first name  is required
+        </div>
+        <div class="form-group">
+            <label>Nom  </label>
+            <input type="text" class="form-control" id="NomCl" placeholder="Enter Last name " 
+            required
+            [(ngModel)]="client.NomCl" name="NomCl" #NomCl="ngModel"> 
+            <div [hidden]="NomCl.valid || NomCl.pristine"
+                 class="alert alert-danger">
+               last name   is required
+        </div>
+          </div>
+        
+      <div class="form-group">
+        <label for="Email"> Adresse Email</label>
+        <input type="text" class="form-control" id="Etat_cmd" placeholder="Give product's Etat_cmd" 
+        required
+        [(ngModel)]="client.Email" name="Email" #Email="ngModel">
+        <div [hidden]="Email.valid || Email.pristine"
+             class="alert alert-danger">
+Adresse email est obligatoire       
+  </div>
+      </div>
+    
+        <div class="form-group">
+            <label>Adresse   </label>
+            <input type="text" class="form-control" id="AdressCl" placeholder="Enter AdressCl " 
+            required
+            [(ngModel)]="client.AdressCl" name="AdressCl" #AdressCl="ngModel"> 
+            <div [hidden]="AdressCl.valid || AdressCl.pristine"
+                 class="alert alert-danger">
+                 AdressCl  is required
+        </div>
+          </div>
+        
+        <div class="form-group">
+            <label>Type  </label>
+            <input type="text" class="form-control" id="Type" placeholder="Enter Type" 
+            required
+            [(ngModel)]="client.Type" name="Type" #Type="ngModel"> 
+            <div [hidden]="Type.valid || Type.pristine"
+                 class="alert alert-danger">
+               Type  is required
+        </div>
+          </div>
+        
+        <div class="form-group">
+            <label>Etat  Client </label>
+            <input type="text" class="form-control" id="EtatCl" placeholder="Enter EtatCl " 
+            required
+            [(ngModel)]="client.EtatCl" name="EtatCl" #EtatCl="ngModel"> 
+            <div [hidden]="EtatCl.valid || EtatCl.pristine"
+                 class="alert alert-danger">
+               Etat client  is required
+        </div>
+          </div>
+        
+
+      
+      
+      <div class="btn-group btn-group-sm">
+      	<button type="button" class="btn btn-dark" (click)="goBack()">Retour </button>
+      	<button type="button" class="btn btn-dark" (click)="addClient()" [disabled]="!addClientForm.form.valid">Ajouter </button>
+      </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted" class="container1">
+  <p>Ajout effectué ! -> <span class="badge badge-light">{{client.IdClient}}  {{client.PrenomCl}} {{client.NomCl}}</span></p>
+	<div class="btn-group btn-group-sm">
+    	<button type="button" class="btn btn-dark" (click)="goBack()">retour </button>
+    	<button type="button" class="btn btn-dark" (click)="newClient(); addClientForm.reset()">Ajouter</button>
+    </div>
+</div>

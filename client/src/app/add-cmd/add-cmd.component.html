@@ -1,0 +1,73 @@
+<h3 class="titre">Ajouter une commande  </h3>
+<div [hidden]="submitted" class="container1">
+    <form #addCommandeForm="ngForm">
+ 
+<!-- <div class="form-group">
+        <label for="clientIdClient">Id client </label>
+        <input type="number" class="form-control" id="clientIdClient" placeholder="Give Product's IdClient"
+        required
+        [(ngModel)]="commande.clientIdClient" name="clientIdClient" #clientIdClient="ngModel">
+        <div [hidden]="clientIdClient.valid || clientIdClient.pristine"
+             class="alert alert-danger">
+             IdClient is required
+        </div>
+  </div>-->
+  <div class="form-group">
+
+     <mat-form-field>
+        <label for="clientIdClient">Id client </label>
+        <select matNativeControl  [(ngModel)]="commande.clientIdClient" name="car" name="clientIdClient" #clientIdClient="ngModel">
+         <option *ngFor="let client of clients" [value]="client.IdClient">
+          {{client.IdClient}}  {{client.PrenomCl}} {{client.NomCl}}
+          </option>
+       </select>
+    </mat-form-field>
+    </div>
+      <div class="form-group">
+        <mat-form-field> 
+                   <label> Etat de la commande </label>
+
+                    <select matNativeControl class="form-control" id="Etat_cmd"  
+                    required
+                    [(ngModel)]="commande.Etat_cmd" name="Etat_cmd" #Etat_cmd="ngModel">
+                                        
+                        <option value="non livrée">Non livrée</option>
+                        <option value="livrée" >livrée</option>
+                        
+                                                           
+                    </select>
+        </mat-form-field> 
+        <div [hidden]="Etat_cmd.valid || Etat_cmd.pristine"
+        class="alert alert-danger">
+Etat commande obligatoire         </div>         
+                          
+    </div>
+      <div class="form-group">
+        <label for="date_ar_cmd">date arrivée de la commande </label>
+        <input type="date" class="form-control" id="date_ar_cmd" 
+        placeholder="Give Product's date_ar_cmd"
+        required
+        [(ngModel)]="commande.date_ar_cmd" name="date_ar_cmd" #date_ar_cmd="ngModel">
+        <div [hidden]="date_ar_cmd.valid || date_ar_cmd.pristine"
+             class="alert alert-danger">
+           date est obligatoire 
+        </div>
+      </div>
+      
+      
+      <div class="btn-group btn-group-sm">
+      	<button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+        <button type="button" class="btn btn-dark" (click)="addCommande()" [disabled]="!addCommandeForm.form.valid">Add</button>
+
+      </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted" class="container1">
+  <p>Ajout effectué ! -> <span class="badge badge-light">{{commande.IdComd}}  {{commande.date_ar_cmd}}</span></p>
+	<div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Retour </button>
+      <button type="button" class="btn btn-dark" routerLink="/lc/afficher">Ajouter produit </button>
+      <button type="button" class="btn btn-dark" (click)="newCommande(); addCommandeForm.reset()">Continue</button>
+  </div>
+</div>

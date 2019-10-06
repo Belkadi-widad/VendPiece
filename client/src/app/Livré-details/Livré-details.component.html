@@ -1,0 +1,66 @@
+<h4 class="titre"><span class="badge badge-light ">{{li.num_bl}} {{li.num_p}} </span></h4>
+<div [hidden]="submitted" class="container1">
+    <form  #detailLivreForm="ngForm">
+        <div class="form-group">
+
+            <mat-form-field >
+               <label for="num_bl">Id Bon de livraison  </label>
+               <select   id="num_bl" matNativeControl placeholder="id bon liv  " on-change="getPieces()"  [(ngModel)]="li.num_bl"   name="num_bl" #num_bl="ngModel">
+                <option  *ngFor="let bl of bls"  id="num_bl" [value]="bl.IdBL"   >
+                 {{bl.IdBL}}   {{bl.DateBL}}   {{bl.NumArCom}} 
+                 </option>
+               </select>
+
+         </mat-form-field>
+
+         <div [hidden]="num_bl.valid || num_bl.pristine"
+         class="alert alert-danger">
+         num_bl is required
+         </div>
+   </div>
+
+<div  class="form-group" >
+
+    <mat-form-field >
+       <label for="num_p">Id Piece </label>
+       <select [disabled]="disabled" matNativeControl placeholder="id piece" [(ngModel)]="li.num_p"  name="num_p" #num_p="ngModel">
+        <option *ngFor="let lc of lcs" [value]="lc.num_p">
+         {{lc.num_p}}           {{lc.qte_com}}           {{lc.qte_liv}}   
+         </option>
+       </select>
+
+ </mat-form-field>
+ <div [hidden]="num_p.valid || num_p.pristine"
+     class="alert alert-danger">
+     num_p is required
+</div>
+
+</div>
+<div class="form-group">
+<label for="qte_liv">Quantité livrée </label>
+<input type="number" class="form-control" id="qte_liv" placeholder="donner la quantité livré " 
+required
+[(ngModel)]="li.qte_liv" name="qte_liv" #qte_liv="ngModel">
+<div [hidden]="qte_liv.valid || qte_liv.pristine"
+     class="alert alert-danger">
+     qte_liv is required
+</div>
+</div>
+          
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+        <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!detailLivreForm.form.valid">Update</button>
+        <button type="button" class="btn btn-dark" (click)="delete()">Delete</button>
+
+
+
+	    </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted">
+    <p>{{message}}</p>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+
+<h3>Ajouter un reglement  </h3>
+<div [hidden]="submitted" class="container1">
+    <form #addRegleForm="ngForm">
+<div class="form-group">
+
+    <mat-form-field>
+       <label for="IdBL">Id de la facture  </label>
+       <select matNativeControl placeholder="id de la facture  " [(ngModel)]="reg.num_fact"  name="num_fact" #num_fact="ngModel">
+        <option *ngFor="let fac of facs" [value]="fac.idFact">
+         {{fac.idFact}}   {{fac.dateEd}}   {{fac.dateEch}} 
+         </option>
+      </select>
+ </mat-form-field>
+   </div>
+    
+     <div class="form-group">
+       <label for="date">date de reglement </label>
+       <input type="date" class="form-control" id="date" 
+       placeholder="conner date reglement "
+       required
+       [(ngModel)]="reg.date" name="date" #date="ngModel">
+       <div [hidden]="date.valid ||  date.pristine"
+            class="alert alert-danger">
+          date is required
+       </div>
+     </div>
+     <div class="form-group">
+           <label for="montant_reg">montant réglé </label>
+           <input type="number" class="form-control" id="montant_reg" 
+           placeholder="donner le montant réglé "
+           required
+           [(ngModel)]="reg.montant_reg" name="montant_reg" #montant_reg="ngModel">
+           <div [hidden]="montant_reg.valid ||  montant_reg.pristine"
+                class="alert alert-danger">
+                montant_reg est obligatoire 
+           </div>
+         </div>
+    
+     
+    
+
+     
+     <div class="btn-group btn-group-sm">
+         <button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+       <button type="button" class="btn btn-dark" (click)="addReg()" [disabled]="!addRegleForm.form.valid">Ajouter</button>
+
+     </div>
+   </form>
+</div>
+
+<div [hidden]="!submitted" class="container1">
+ <p>Submitted Successfully! -> <span class="badge badge-light">{{reg.date}} {{reg.num_fact}} {{reg.montant_reg}} </span></p>
+   <div class="btn-group btn-group-sm">
+     <button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+     <button type="button" class="btn btn-dark" (click)="newReg(); addRegleForm.reset()">Continuer</button>
+ </div>
+</div>

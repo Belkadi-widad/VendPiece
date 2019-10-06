@@ -1,0 +1,46 @@
+<!--<h5>Toutes les factures  </h5>
+<div class="Cls"><span class="s1"> Id facture  </span> <span class="s2">numero du bon de livraison  </span> <span class="s2">Date edition facture </span>    <span class="s2">date echance de la facture  </span> <span class="s2">prix totale   </span> <br> <br> </div>
+<div *ngFor="let fact  of facts" class="container" >
+  <a [routerLink]="['/facs', fact.idFact]" style="color:black">
+    <div class="Cls"><span class="badge badge-dark">{{fact.idFact}}</span> -> <span class="s1">{{fact.num_BL}} </span><span class="s1">{{fact.dateEd}}</span> <span class="s1">{{ fact.dateEch }}</span> <span class="s1">{{ fact.prix_tot }}</span> </div>
+          </a>
+</div>-->
+
+
+<div class="example-container mat-elevation-z8">
+  <table mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="idFact">
+      <th mat-header-cell *matHeaderCellDef> id facture </th>
+      <td mat-cell *matCellDef="let element" class="IdPiece-col"> {{element.idFact}} </td>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="dateEd">
+      <th mat-header-cell *matHeaderCellDef> date edition  </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateEd}} </td>
+    </ng-container>
+
+    <!-- Author Column -->
+    <ng-container matColumnDef="dateEch">
+      <th mat-header-cell *matHeaderCellDef> date écheance </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateEch}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="prix_tot">
+      <th mat-header-cell *matHeaderCellDef> Montant  </th>
+      <td mat-cell *matCellDef="let element"> {{element.prix_tot}} </td>
+    </ng-container>
+
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/facs', row.idFact]" ></tr>
+  </table>
+</div>
+
+

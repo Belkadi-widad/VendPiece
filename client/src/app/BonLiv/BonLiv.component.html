@@ -1,0 +1,58 @@
+<!--<h5>Tout les bon de livraisons </h5>
+<div class="Cls"><span class="s1"> IdBon livraison </span> <span class="s2">Date bon de livraison</span>   <span class="s2">numero de la commande </span> <span class="s2">nombre de colis  </span> <span class="s2">poids du colis  </span> <br> <br> </div>
+<div *ngFor="let bonliv  of bonlivs" class="container" >
+  <a [routerLink]="['/bonlivs', bonliv.IdBL]" style="color:black">
+    <div class="Cls"><span class="badge badge-dark">{{bonliv.IdBL}}</span> -> <span class="s1">{{ bonliv.DateBL}} </span><span class="s1">{{ bonliv.Nbr_colis }}</span> <span class="s1"> {{bonliv.NumArCom }}</span> <span class="s1"> {{ bonliv.Poids_Col }}</span> </div>
+          </a>
+</div>-->
+
+
+
+<div class="example-container mat-elevation-z8">
+  <table mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="IdBL">
+      <th mat-header-cell *matHeaderCellDef> id piéce  </th>
+      <td mat-cell *matCellDef="let element" class="IdPiece-col"> {{element.IdBL}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="DateBL">
+      <th mat-header-cell *matHeaderCellDef> Designation piéce  </th>
+      <td mat-cell *matCellDef="let element"> {{element.DateBL}} </td>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="Nbr_colis">
+      <th mat-header-cell *matHeaderCellDef>  Nombre colis   </th>
+      <td mat-cell *matCellDef="let element"> {{element.Nbr_colis}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="NomPrep">
+      <th mat-header-cell *matHeaderCellDef>  nom du préparateur   </th>
+      <td mat-cell *matCellDef="let element"> {{element.NomPrep}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Poids_Col">
+      <th mat-header-cell *matHeaderCellDef>  Poids d'un  colis   </th>
+      <td mat-cell *matCellDef="let element"> {{element.Poids_Col}} </td>
+    </ng-container>
+
+    <!-- Author Column -->
+    <ng-container matColumnDef="NumArCom">
+      <th mat-header-cell *matHeaderCellDef> Numéro d'arrivée </th>
+      <td mat-cell *matCellDef="let element"> {{element.NumArCom}} </td>
+    </ng-container>
+
+ *
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/bonlivs', row.IdBL]"   ></tr>
+  </table>
+</div>
+

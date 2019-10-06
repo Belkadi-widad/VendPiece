@@ -1,0 +1,21 @@
+<div  class ="barChart" style="text-align:center">
+    
+    <canvas id="barChart">
+
+    </canvas>
+
+    
+  </div>
+  <div  class ="pieChart"> 
+    
+    <canvas  id="pieChart">
+   </canvas> <!---->
+    <div *ngIf="PieChart.submitted">
+      <rupture-piece></rupture-piece>
+     </div>
+ </div>  
+
+  
+  
+  
+  <router-outlet></router-outlet>

@@ -1,0 +1,55 @@
+<h4 class="titre"><span class="badge badge-light ">{{piece.id}}</span> -> {{piece.DesignP}}</h4>
+<div [hidden]="submitted" class="container1">
+    <form  #detailPieceForm="ngForm">
+      <div class="form-group">
+        <label for="DesignP">Designation produit</label>
+        <input type="text" class="form-control" id="DesignP" required
+        [(ngModel)]="piece.DesignP" name="DesignP" #DesignP="ngModel">
+        <div [hidden]="DesignP.valid || DesignP.pristine"
+             class="alert alert-danger">
+            Designation Produit  is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="Poids">Poids</label>
+        <input type="number" class="form-control" id="Poids" required
+        [(ngModel)]="piece.Poids" name="Poids" #Poids="ngModel">
+        <div [hidden]="Poids.valid || Poids.pristine"
+             class="alert alert-danger">
+             Poids is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="Prix_p">Prix </label>
+        <input type="number" class="form-control" id="Prix_p" required
+        [(ngModel)]="piece.Prix_p" name="Prix_p" #Prix_p="ngModel">
+        <div [hidden]="Prix_p.valid || Prix_p.pristine"
+             class="alert alert-danger">
+             Prix_p is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Qte_p">Quantité </label>
+        <input type="number" class="form-control" id="Qte_p" required
+        [(ngModel)]="piece.Qte_p" name="Qte_p" #Qte_p="ngModel">
+        <div [hidden]="Qte_p.valid || Qte_p.pristine"
+             class="alert alert-danger">
+             Qte_p is required
+        </div>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+        <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!detailPieceForm.form.valid">Modifier</button>
+        <button type="button" class="btn btn-dark" (click)="delete()">Supprimer </button>
+	    </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted" class="container1">
+    <p>{{message}}</p>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+    </div>
+</div>

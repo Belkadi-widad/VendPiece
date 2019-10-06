@@ -1,0 +1,13 @@
+body {
+    font-family: "Century Gothic" , Verdana, sans-serif; 
+ /* background-image: url("E:\auto.jpg"); */
+  background-repeat: no-repeat;
+  background-attachment: scroll; 
+  background-position: top center ; 
+  background-color: black ; 
+}
+
+.col-sm-8 mx-auto
+{
+position : top center  ; 
+}

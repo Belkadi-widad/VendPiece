@@ -1,0 +1,160 @@
+<body>
+<div id='image' ></div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list >
+       
+        <ul class="navbar-nav">
+            <li class="nav-item">
+               <a class="nav-link" routerLink="/">Acceuil</a>
+            </li>
+            
+            <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+              <a class="nav-link" routerLink="/login">Connexion</a>
+           </li>
+           <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+            <a class="nav-link" routerLink="/register">Inscription</a>
+           </li>
+      
+           <li class="nav-item" *ngIf="auth.isLoggedIn()">
+           <a class="nav-link" routerLink="/profile">{{auth.getUserDetails()?.username}}</a>
+           </li>
+      
+           <li class="nav-item" *ngIf="auth.isLoggedIn()">
+            <a class="nav-link" (click)="auth.logOut()" routerLink="">Déconnexion</a>
+            </li>
+      
+            
+            <li class="nav-item" *ngIf="auth.isLoggedIn()">
+             
+            </li>
+            
+      
+          </ul>
+
+          <button *ngIf="auth.Magasinier()" mat-button [matMenuTriggerFor]="produit">Pièces</button>
+          <mat-menu #produit  yPosition="above" xPosition="after" >
+            <button mat-menu-item><a routerLink="pieces/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Ajouter piéce </a>
+            </button>
+            <button mat-menu-item><a routerLink="pieces" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Listes des piéces </a>
+            </button>
+            <button mat-menu-item><a routerLink="chart" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Statistique </a>
+            </button>
+
+          </mat-menu>
+
+          <div>
+            <button *ngIf="auth.Magasinier()" mat-button [matMenuTriggerFor]="rup">Rupture stock </button>
+          </div>
+            <mat-menu #rup  yPosition="above" xPosition="after" >
+                
+              <button mat-menu-item><a routerLink="rupture" class="btn btn-light btn-sm" role="button" routerLinkActive="active" >Listes des piéces <br> en rupture </a>
+              </button> 
+
+              </mat-menu>
+
+          <div>
+
+          <button *ngIf="auth.Magasinier()" mat-button [matMenuTriggerFor]="BonLiv">Bon de livraisons</button>
+          </div>
+          <mat-menu #BonLiv  yPosition="above" xPosition="after" >
+              <button mat-menu-item><a routerLink="bonlivs/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Ajouter</a>
+              </button>
+              <button mat-menu-item><a routerLink="bonlivs" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Afficher </a>
+              </button>
+             
+            </mat-menu>
+          
+            <div>
+
+              <button *ngIf="auth.Magasinier()" mat-button [matMenuTriggerFor]="ProduitsLivres">Produits livrés</button>
+              </div>
+              <mat-menu #ProduitsLivres  yPosition="above" xPosition="after" >
+                  <button mat-menu-item><a routerLink="livrés/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Ajouter</a>
+                  </button>
+                  <button mat-menu-item><a routerLink="li" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Afficher</a>
+                  </button>
+                 
+              </mat-menu>
+              
+          <div>
+          <button *ngIf="auth.ServiceComm()" mat-button [matMenuTriggerFor]="client">Clients</button>
+          </div>
+    
+          <mat-menu #client yPosition="above" xPosition="after" >
+            <button mat-menu-item><a routerLink="cls/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Ajouter</a></button>
+            
+            <button mat-menu-item><a routerLink="cls" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Afficher</a>
+            </button>
+          
+          </mat-menu>
+          <div>
+            <button *ngIf="auth.ServiceComm()" mat-button [matMenuTriggerFor]="facture">Factures</button>
+            </div>
+      
+            <mat-menu #facture yPosition="above" xPosition="after" >
+              <button mat-menu-item><a routerLink="fac/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Ajouter</a></button>
+              
+              <button mat-menu-item><a routerLink="facs" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Afficher</a>
+              </button>
+            
+            </mat-menu>
+          <div>
+            
+              <button *ngIf="auth.ServiceComm()" mat-button [matMenuTriggerFor]="com">Commandes</button>
+            </div>
+            <mat-menu #com yPosition="above" xPosition="after" >
+                <button mat-menu-item> <a routerLink="cmds/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Ajouter</a></button>
+                <button mat-menu-item><a routerLink="cmds" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Afficher </a>
+                </button>
+              
+              </mat-menu>
+
+            <div>
+            <button *ngIf="!auth.ServiceComm() && !auth.Magasinier() && auth.isLoggedIn() " mat-button [matMenuTriggerFor]="Reglement">Reglement</button>
+            </div>
+      
+            <mat-menu #Reglement yPosition="above" xPosition="after" >
+              <button mat-menu-item><a routerLink="reg/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Ajouter</a></button>
+              
+              <button mat-menu-item><a routerLink="reg" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Afficher</a>
+              </button>
+            
+            </mat-menu>
+
+            <div>
+              <button *ngIf="!auth.ServiceComm() && !auth.Magasinier() && auth.isLoggedIn() " mat-button [matMenuTriggerFor]="Relance">Facture à relancer</button>
+              </div>
+        
+              <mat-menu #Relance yPosition="above" xPosition="after" >
+                <button mat-menu-item><a routerLink="rel" class="btn btn-light btn-sm" role="button" routerLinkActive="active">Afficher</a>
+                </button>
+              
+              </mat-menu>
+
+    </mat-nav-list>
+   
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+       <h1 class="text-center">VendPiece</h1>
+    </mat-toolbar>
+   
+   
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<router-outlet></router-outlet>
+</body>

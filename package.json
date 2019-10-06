@@ -1,0 +1,29 @@
+{
+  "name": "vendpiece",
+  "version": "1.0.0",
+  "description": "projet SI",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/animations": "^7.1.4",
+    "@angular/cdk": "^7.2.0",
+    "@angular/material": "^7.2.0",
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.2.1",
+    "chart.js": "^2.7.3",
+    "chartjs-plugin-labels": "^1.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.4",
+    "nodemon": "^1.18.9",
+    "sequelize": "^4.42.0"
+  }
+}

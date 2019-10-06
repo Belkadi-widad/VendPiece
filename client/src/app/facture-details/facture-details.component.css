@@ -1,0 +1,59 @@
+
+h4
+{
+	font-size: 20px;
+    color: #558AB4 ; 
+	text-indent: 450px;
+
+
+}
+.container1
+{
+  margin : 50px 300px;
+  width : 440px ; 
+  height: 400px ;
+}
+
+
+
+label
+{
+	color: white ; 
+}
+p {
+	color: white ; 
+
+}
+
+.container2{
+
+	width : 250px ;
+	margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 50px;
+
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 800px;
+  min-width: 500px;
+  overflow: auto;
+  margin: 100px 200px 200px 250px;
+}
+
+.IdPiece-col{
+  flex: 0 0 100px !important;
+  white-space: unset !important;
+}
+
+.dauChart {
+  position:absolute; 
+  top:100px; 
+  left:700px; 
+  width: 800px ; 
+  height: 450px ; 
+ 
+}
+

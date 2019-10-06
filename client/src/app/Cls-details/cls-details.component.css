@@ -1,0 +1,29 @@
+h4
+{
+	font-size: 20px;
+    color: #558AB4 ; 
+	text-indent: 450px;
+
+
+}
+.container1
+{
+	margin : 50px 500px;
+}
+
+
+
+label
+{
+	color: black ; 
+}
+p {
+	color: black; 
+
+}
+.chart{
+	position:absolute; 
+   top:800px; 
+    left:150px;
+    
+}

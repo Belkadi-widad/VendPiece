@@ -1,0 +1,40 @@
+<!--<h5>Les produits commandés </h5>
+<div class="Cls"><span class="s1"> Id piéce</span><span class="s1">Id Client</span><span class="s2">Designiation</span> <span class="s2">poids</span>  <span class="s2">prix</span> <span class="s2">quantité</span> <br> <br> </div>
+<div *ngFor="let commandes  of cmds" class="container" >
+  <a [routerLink]="['/lc', commandes.IdComd]" style="color:black">
+    <div class="Cls"><span class="badge badge-dark">{{commandes.IdComd}}</span> -> <span class="s1">{{ commandes.clientIdClient }} </span> <span class="s1">{{ commandes. date_ar_cmd }} </span><span class="s1">{{ commandes.Etat_cmd }}</span>   </div>
+          </a>
+          [routerLink]="['/li', row.num_bl ,row.num_p]"
+</div>
+-->
+
+
+<div class="example-container mat-elevation-z8">
+    <table mat-table #table [dataSource]="dataSource">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Title Column -->
+      <ng-container matColumnDef="num_bl">
+        <th mat-header-cell *matHeaderCellDef> Numéro du bon de commande   </th>
+        <td mat-cell *matCellDef="let element" class="IdPiece-col"> {{element.num_bl}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="num_p">
+        <th mat-header-cell *matHeaderCellDef> Numéro de la piéce  </th>
+        <td mat-cell *matCellDef="let element"> {{element.num_p}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="qte_liv">
+        <th mat-header-cell *matHeaderCellDef>  La quantitée livrée   </th>
+        <td mat-cell *matCellDef="let element"> {{element.qte_liv}} </td>
+      </ng-container>
+   
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"    ></tr>
+    </table>
+  </div>
+  
+  

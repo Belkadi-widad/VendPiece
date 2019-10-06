@@ -1,0 +1,44 @@
+/*h5
+{
+	font-size: 16px;
+	color: red ; 
+	text-indent: 150px;
+
+}
+
+.Cls .s1 {
+    font-size: 16px;
+	color: black; 
+	text-indent: 160px;
+    margin-left: 100px;
+
+}
+.Cls .s2{
+
+    font-size: 16px;
+	color: black; 
+	text-indent: 140px;
+    margin-left: 100px;
+
+}
+*/
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    min-width: 500px;
+    overflow: auto;
+    margin: 100px 200px 200px 250px;
+  }
+  
+  .IdPiece-col{
+    flex: 0 0 100px !important;
+    white-space: unset !important;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  

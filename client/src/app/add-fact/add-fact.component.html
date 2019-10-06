@@ -1,0 +1,68 @@
+<h3>Ajouter une facture </h3>
+<div [hidden]="submitted" class="container1">
+    <form #addFactForm="ngForm">
+ 
+<!-- <div class="form-group">
+        <label for="clientIdClient">Id client </label>
+        <input type="number" class="form-control" id="clientIdClient" placeholder="Give Product's IdClient"
+        required
+        [(ngModel)]="commande.clientIdClient" name="clientIdClient" #clientIdClient="ngModel">
+        <div [hidden]="clientIdClient.valid || clientIdClient.pristine"
+             class="alert alert-danger">
+             IdClient is required
+        </div>
+  </div>-->
+  <div class="form-group">
+
+     <mat-form-field>
+        <label for="IdBL">Id bon de livraison </label>
+        <select matNativeControl placeholder="id bon de livraison " [(ngModel)]="fact.num_BL"  name="num_BL" #num_BL="ngModel">
+         <option *ngFor="let bl of bls" [value]="bl.IdBL">
+          {{bl.IdBL}}   {{bl.DateBL}}   {{bl.NomPrep}} 
+          </option>
+       </select>
+  </mat-form-field>
+    </div>
+     
+      <div class="form-group">
+        <label for="DateFact">date edition facture</label>
+        <input type="date" class="form-control" id="dateEd" 
+        placeholder="Give  date Edition"
+        required
+        [(ngModel)]="fact.dateEd" name="dateEd" #dateEd="ngModel">
+        <div [hidden]="dateEd.valid ||  dateEd.pristine"
+             class="alert alert-danger">
+           date is required
+        </div>
+      </div>
+      <div class="form-group">
+            <label for="dateEch">date echéance facture</label>
+            <input type="date" class="form-control" id="dateEch" 
+            placeholder="Give  date Edition"
+            required
+            [(ngModel)]="fact.dateEch" name="dateEch" #dateEch="ngModel">
+            <div [hidden]="dateEch.valid ||  dateEch.pristine"
+                 class="alert alert-danger">
+                 dateEch is required
+            </div>
+          </div>
+     
+      
+     
+
+      
+      <div class="btn-group btn-group-sm">
+      	<button type="button" class="btn btn-dark" (click)="goBack()">Retour </button>
+        <button type="button" class="btn btn-dark" (click)="addFact()" [disabled]="!addFactForm.form.valid">Ajouter</button>
+
+      </div>
+    </form>
+</div>
+ 
+<div [hidden]="!submitted">
+  <p>Ajout effectué ! -> <span class="badge badge-light">{{fact.idFact}} {{fact.dateEd}} {{fact.dateEch}} </span></p>
+	<div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Retour</button>
+      <button type="button" class="btn btn-dark" (click)="newFact(); addFactForm.reset()">Continuer</button>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-5 mx-auto">
+                <form (submit)="register()">
+                    <h1 class="h3">S'inscrire</h1>
+
+                    <div class="form-group">
+                            <label>nom d'utilisateur </label>
+                            <input type="text" class="form-control" name="user" placeholder="Enter login name " [(ngModel)]="credentials.username">
+                    </div>
+                    <div class="form-group">
+                            <label>Adresse Email </label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter Email" [(ngModel)]="credentials.Email">
+                    </div>
+                    
+                    <div class="form-group">
+                            <label>Mot de passe </label>
+                            <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password">
+                    </div>
+                
+              <div class="form-group">
+
+
+                    <mat-form-field> 
+                               <mat-label> Service </mat-label>
+          
+                                <mat-select name="service" matNativeControl required [(ngModel)]="credentials.service"  placeholder="service">
+                                                    
+                                    <mat-option value="Service commerciale">Service commerciale</mat-option>
+                                    <mat-option value="Service comtabilite" >Service comtabilité</mat-option>
+                                    <mat-option value="Magasinier">Magasinier</mat-option>
+                                                                       
+                                </mat-select>
+                    </mat-form-field>          
+                                      
+                </div>
+          
+                            
+        
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
+        </form>
+
+        </div>
+    
+           
+        </div>
+    </div>
